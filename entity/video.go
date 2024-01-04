@@ -8,8 +8,8 @@ type User struct {
 }
 
 type Video struct {
-	Title       string `json:"title" binding:"min=2,max=10" validate:"is-programming"`
-	Description string `json:"description" binding:"max=20"`
+	Title       string `json:"title" binding:"min=2,max=30" validate:"is-programming"`
+	Description string `json:"description" binding:"max=50"`
 	URL         string `json:"url" binding:"required,url"`
 	Author      User   `json:"author" binding:"required"`
 }
