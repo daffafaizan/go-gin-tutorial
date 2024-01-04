@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/daffafaizan/go-gin-tutorial/controller"
+	"github.com/daffafaizan/go-gin-tutorial/middlewares"
 	"github.com/daffafaizan/go-gin-tutorial/service"
 	"github.com/gin-gonic/gin"
 )
@@ -12,13 +13,15 @@ var (
 )
 
 func main() {
-	server := gin.Default()
+	server := gin.New()
 
-	server.GET("/posts", func(c *gin.Context) {
+	server.Use(gin.Recovery(), middlewares.Logger())
+
+	server.GET("/videos", func(c *gin.Context) {
 		c.JSON(200, videoController.FindAll())
 	})
 
-	server.POST("/posts", func(c *gin.Context) {
+	server.POST("/videos", func(c *gin.Context) {
 		c.JSON(200, videoController.Save(c))
 	})
 
