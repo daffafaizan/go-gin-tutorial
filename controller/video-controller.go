@@ -33,6 +33,10 @@ func (controller videoController) Save(c *gin.Context) error {
 	if err != nil {
 		return err
 	}
+	err = validate.Struct(video)
+	if err != nil {
+		return err
+	}
 	controller.service.Save(video)
 	return nil
 }
