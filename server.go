@@ -27,6 +27,8 @@ func main() {
 
 	server := gin.New()
 
+	server.LoadHTMLGlob("templates/*.html")
+
 	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
 	server.GET("/videos", func(c *gin.Context) {
