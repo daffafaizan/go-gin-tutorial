@@ -47,5 +47,10 @@ func main() {
 		})
 	}
 
+	viewRoutes := server.Group("/views")
+	{
+		viewRoutes.GET("/videos", videoController.ShowAll)
+	}
+
 	server.Run("localhost:8080")
 }

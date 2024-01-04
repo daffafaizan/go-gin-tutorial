@@ -2,12 +2,17 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /videos                   --> main.main.func1 (5 handlers)
-[GIN-debug] POST   /videos                   --> main.main.func2 (5 handlers)
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /api/videos               --> main.main.func1 (5 handlers)
+[GIN-debug] POST   /api/videos               --> main.main.func2 (5 handlers)
+[GIN-debug] GET    /views/videos             --> github.com/daffafaizan/go-gin-tutorial/controller.VideoController.ShowAll-fm (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on localhost:8080
-127.0.0.1 - [04 Jan 24 17:18 WIB] GET /videos 200 755.709µs 
-127.0.0.1 - [04 Jan 24 17:18 WIB] POST /videos 400 3.612375ms 
-127.0.0.1 - [04 Jan 24 17:18 WIB] POST /videos 200 567.583µs 
-127.0.0.1 - [04 Jan 24 17:18 WIB] GET /videos 200 340.791µs 
+127.0.0.1 - [04 Jan 24 20:45 WIB] POST /api/videos 200 1.945209ms 
+127.0.0.1 - [04 Jan 24 20:45 WIB] POST /api/videos 200 4.060791ms 
+127.0.0.1 - [04 Jan 24 20:45 WIB] GET /api/videos 200 267.292µs 
+127.0.0.1 - [04 Jan 24 20:45 WIB] GET /views/videos 200 2.358417ms 
