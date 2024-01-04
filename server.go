@@ -8,6 +8,7 @@ import (
 	"github.com/daffafaizan/go-gin-tutorial/middlewares"
 	"github.com/daffafaizan/go-gin-tutorial/service"
 	"github.com/gin-gonic/gin"
+	gindump "github.com/tpkeeper/gin-dump"
 )
 
 var (
@@ -25,7 +26,7 @@ func main() {
 
 	server := gin.New()
 
-	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
+	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
 	server.GET("/videos", func(c *gin.Context) {
 		c.JSON(200, videoController.FindAll())
