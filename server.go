@@ -31,18 +31,21 @@ func main() {
 
 	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth(), gindump.Dump())
 
-	server.GET("/videos", func(c *gin.Context) {
-		c.JSON(200, videoController.FindAll())
-	})
+	apiRoutes := server.Group("/api")
+	{
+		apiRoutes.GET("/videos", func(c *gin.Context) {
+			c.JSON(200, videoController.FindAll())
+		})
 
-	server.POST("/videos", func(c *gin.Context) {
-		err := videoController.Save(c)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"message": "Video format valid."})
-		}
-	})
+		apiRoutes.POST("/videos", func(c *gin.Context) {
+			err := videoController.Save(c)
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				c.JSON(http.StatusOK, gin.H{"message": "Video format valid."})
+			}
+		})
+	}
 
 	server.Run("localhost:8080")
 }
